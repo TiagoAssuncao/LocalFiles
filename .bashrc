@@ -736,7 +736,5 @@ alias run='python3 manage.py runserver'
 alias manage='python3 manage.py'
 . ~/.xinitrc
 
-#Show fecth in terminal
-screenfetch
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

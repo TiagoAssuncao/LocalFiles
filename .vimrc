@@ -23,6 +23,7 @@ Plugin 'tomtom/tcomment_vim'
 
 "Themes
 Plugin 'tomasr/molokai'
+Plugin 'NLKNguyen/papercolor-theme'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
@@ -65,7 +66,7 @@ set autoread
 set t_Co=256 " Force 256 colors
 
 set t_ut= " improve screen clearing by using the background color
-set background=dark
+set background=light
 syntax enable
 set enc=utf-8
 
@@ -92,10 +93,20 @@ set incsearch
 set ignorecase
 set smartcase
 set smartindent
-set background=dark
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.pyc
-    colorscheme molokai
+
+" Set dark color
+colorscheme molokai
+set background=dark
+
+
+" Set light color
+" set t_Co=256   " This is may or may not needed.
+" set background=light
+" colorscheme PaperColor
+
+
 "hi Normal ctermbg=none
 
 " autocmd vimenter * NERDTree
@@ -139,7 +150,7 @@ let mapleader=","
 
 map <F9> :NERDTreeToggle <cr>
 map <leader>t :terminal<cr>
-map <leader>l :bn<cr>
-map <leader>j :bp<cr>
+map <leader>l :w <bar> :bn<cr>
+map <leader>j :w <bar> :bp<cr>
 map <leader>k :x<cr>
 command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
