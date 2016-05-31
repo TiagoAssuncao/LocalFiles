@@ -16,49 +16,56 @@ Plugin 'jtratner/vim-flavored-markdown'
 autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
 autocmd FileType markdown set tw=80
 "Plugin 'kevinw/pyflakes-vim'
-Plugin 'vim-scripts/pep8'
-Plugin 'vim-scripts/Pydiction'
+" Plugin 'vim-scripts/pep8'
+" Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tomtom/tcomment_vim'
 
 "Themes
 Plugin 'tomasr/molokai'
+
 Plugin 'NLKNguyen/papercolor-theme'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'orenhe/pylint.vim'
-Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'orenhe/pylint.vim'
+" Plugin 'mustache/vim-mustache-handlebars'
 "Plugin 'bling/vim-airline'       " UI statusbar niceties
-Plugin 'chriskempson/base16-vim'
+" Plugin 'chriskempson/base16-vim'
 "Plugin 'skammer/vim-css-color'
 "Plugin 'roman/golden-ratio'
 Plugin 'kien/ctrlp.vim.git'
-Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'honza/vim-snippets'
 Plugin 'bronson/vim-trailing-whitespace'
 " Plugin 'kmyk/sdl2.vim'
-Plugin 'Valloric/YouCompleteMe'
-  let g:ycm_autoclose_preview_window_after_completion=1
-  map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" Plugin 'Valloric/YouCompleteMe'
+  " let g:ycm_autoclose_preview_window_after_completion=1
+  " map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "Plugin 'vim-scripts/Conque-Shell'
-Plugin 'vim-airline/vim-airline'
-Plugin 'powerline/powerline'
-  set laststatus=2               " enable airline even if no splits
-"  let g:airline_theme='luna'
-  let g:airline_powerline_fonts=1
-  let g:airline_powerline_fonts = 1
-  let g:airline_left_sep = '|'
-  let g:airline_right_sep = '|'
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#fnamemod = ':t'
-" END HERE
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'powerline/powerline'
+" " END HERE
 Plugin 'lepture/vim-jinja'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Vim Air Line
+let g:airline_theme='murmur'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts=1
+let g:airline_left_sep = '|'
+let g:airline_right_sep = '|'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+set laststatus=2               " enable airline even if no splits
 
 
 set number " line numbering
@@ -122,29 +129,37 @@ set completeopt=menuone,longest,preview
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Enable omni completion.
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,ctp set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php,ctp set omnifunc=phpcomplete#CompletePHP
-autocmd FileType vim set omnifunc=syntaxcomplete#Complete
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown,ctp set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python set omnifunc=pythoncomplete#Complete
+" autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType php,ctp set omnifunc=phpcomplete#CompletePHP
+" autocmd FileType vim set omnifunc=syntaxcomplete#Complete
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 let g:pydiction_location='/home/tiago/.vim/bundle/Pydiction/complete-dict'
 let g:miniBufExplTabWrap = 9
 
 " Syntasttic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 
 if has("gui_running")
    highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
+
+" Move lines like in atom.
+nnoremap <c-s-j> :m .+1<CR>==
+nnoremap <c-s-k> :m .-2<CR>==
+inoremap <c-s-j> <Esc>:m .+1<CR>==gi
+inoremap <c-s-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-s-j> :m '>+1<CR>gv=gv
+vnoremap <c-s-k> :m '<-2<CR>gv=gv
 
 let mapleader=","
 
