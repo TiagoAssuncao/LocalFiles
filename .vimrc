@@ -3,7 +3,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tell-k/vim-autopep8'
+Plugin 'ervandew/supertab'
+Plugin 'ryanoasis/vim-devicons'
 " HERE
 "Plugin 'elixir-lang/vim-elixir'
 "Plugin 'jelera/vim-javascript-syntax'
@@ -23,7 +24,6 @@ Plugin 'tomtom/tcomment_vim'
 
 "Themes
 Plugin 'tomasr/molokai'
-
 Plugin 'NLKNguyen/papercolor-theme'
 
 Plugin 'tpope/vim-fugitive'
@@ -34,7 +34,7 @@ Plugin 'scrooloose/nerdtree'
 " Plugin 'chriskempson/base16-vim'
 "Plugin 'skammer/vim-css-color'
 "Plugin 'roman/golden-ratio'
-Plugin 'kien/ctrlp.vim.git'
+" Plugin 'kien/ctrlp.vim.git'
 " Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 " Plugin 'garbas/vim-snipmate'
@@ -54,9 +54,13 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()            " required
 filetype plugin indent on    " required
+let g:webdevicons_enable_nerdtree = 1
+let g:airline_powerline_fonts = 1
+set encoding=utf8
 
 " Vim Air Line
-let g:airline_theme='murmur'
+"https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme='hybridline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -143,6 +147,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 let g:pydiction_location='/home/tiago/.vim/bundle/Pydiction/complete-dict'
 let g:miniBufExplTabWrap = 9
 
+
 " Syntasttic
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -169,3 +174,4 @@ map <leader>l :w <bar> :bn<cr>
 map <leader>j :w <bar> :bp<cr>
 map <leader>k :x<cr>
 command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
+

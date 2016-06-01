@@ -735,6 +735,7 @@ PROMPT_COMMAND='__setprompt'
 alias run='python3 manage.py runserver'
 alias manage='python3 manage.py'
 alias l='ls'
+alias c='cd'
 . ~/.xinitrc
 
 
