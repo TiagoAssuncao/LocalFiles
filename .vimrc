@@ -1,24 +1,26 @@
+"        ________ ++     ________
+"       /VVVVVVVV\++++  /VVVVVVVV\
+"       \VVVVVVVV/++++++\VVVVVVVV/
+"        |VVVVVV|++++++++/VVVVV/'
+"        |VVVVVV|++++++/VVVVV/'
+"       +|VVVVVV|++++/VVVVV/'+
+"     +++|VVVVVV|++/VVVVV/'+++++
+"   +++++|VVVVVV|/VVVVV/'+++++++++
+"     +++|VVVVVVVVVVV/'+++++++++
+"       +|VVVVVVVVV/'+++++++++
+"        |VVVVVVV/'+++++++++
+"        |VVVVV/'+++++++++
+"        |VVV/'+++++++++
+"        'V/'   ++++++
+"                 ++
+"
+" Vundle Plugin Manager
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ervandew/supertab'
-Plugin 'ryanoasis/vim-devicons'
-" HERE
-"Plugin 'elixir-lang/vim-elixir'
-"Plugin 'jelera/vim-javascript-syntax'
-"Plugin 'cakebaker/scss-syntax.vim'
-"Plugin 'othree/html5.vim'
-"Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jtratner/vim-flavored-markdown'
-  let g:markdown_fenced_languages=['ruby', 'javascript', 'elixir', 'clojure', 'sh', 'html', 'sass', 'scss', 'haml', 'erlang', 'python']
-
-autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-autocmd FileType markdown set tw=80
-"Plugin 'kevinw/pyflakes-vim'
-" Plugin 'vim-scripts/pep8'
-" Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tomtom/tcomment_vim'
 
@@ -28,30 +30,43 @@ Plugin 'NLKNguyen/papercolor-theme'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tomtom/tlib_vim'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'lepture/vim-jinja'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mhinz/vim-startify'
+Plugin 'ryanoasis/vim-devicons'
+
+
+
+" Plugin 'kmyk/sdl2.vim'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'honza/vim-snippets'
+" Plugin 'Valloric/YouCompleteMe'
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"Plugin 'vim-scripts/Conque-Shell'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'powerline/powerline'
+" " END HERE
 " Plugin 'orenhe/pylint.vim'
 " Plugin 'mustache/vim-mustache-handlebars'
 "Plugin 'bling/vim-airline'       " UI statusbar niceties
 " Plugin 'chriskempson/base16-vim'
 "Plugin 'skammer/vim-css-color'
 "Plugin 'roman/golden-ratio'
-" Plugin 'kien/ctrlp.vim.git'
 " Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-" Plugin 'garbas/vim-snipmate'
-" Plugin 'honza/vim-snippets'
-Plugin 'bronson/vim-trailing-whitespace'
-" Plugin 'kmyk/sdl2.vim'
-" Plugin 'Valloric/YouCompleteMe'
-  " let g:ycm_autoclose_preview_window_after_completion=1
-  " map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"Plugin 'vim-scripts/Conque-Shell'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'powerline/powerline'
-" " END HERE
-Plugin 'lepture/vim-jinja'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'elixir-lang/vim-elixir'
+"Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'cakebaker/scss-syntax.vim'
+"Plugin 'othree/html5.vim'
+"Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'kevinw/pyflakes-vim'
+" Plugin 'vim-scripts/pep8'
+" Plugin 'vim-scripts/Pydiction'
 call vundle#end()            " required
 filetype plugin indent on    " required
 let g:webdevicons_enable_nerdtree = 1
@@ -111,20 +126,11 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*.pyc
 colorscheme molokai
 set background=dark
 
-
 " Set light color
 " set t_Co=256   " This is may or may not needed.
 " set background=light
 " colorscheme PaperColor
 
-
-"hi Normal ctermbg=none
-
-" autocmd vimenter * NERDTree
-
-" Pep8 using F6
-" " You can change with this :
-let g:pep8_map='<F6>'
 
 " Set autocomplete form
 set completeopt=menuone,longest,preview
@@ -144,7 +150,6 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-let g:pydiction_location='/home/tiago/.vim/bundle/Pydiction/complete-dict'
 let g:miniBufExplTabWrap = 9
 
 
@@ -153,9 +158,14 @@ let g:miniBufExplTabWrap = 9
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
+" AutoClose
+imap { {}<left>
+imap ( ()<left>
+imap [ []<left>
+imap < <><left>
 
 if has("gui_running")
-   highlight SpellBad term=underline gui=undercurl guisp=Orange
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
 
 " Move lines like in atom.
@@ -172,6 +182,46 @@ map <F9> :NERDTreeToggle <cr>
 map <leader>t :terminal<cr>
 map <leader>l :w <bar> :bn<cr>
 map <leader>j :w <bar> :bp<cr>
-map <leader>k :x<cr>
-command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
+map <leader>k :w<cr>
+map <leader>b :bufdo bd<cr>
+map <leader>ç :x<cr>
+" command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
+
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+let g:airline_powerline_fonts = 1
+
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_ctrlp = 1
+
+
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
 
