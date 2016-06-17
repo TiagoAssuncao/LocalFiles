@@ -27,6 +27,7 @@ Plugin 'tomtom/tcomment_vim'
 "Themes
 Plugin 'tomasr/molokai'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'flazz/vim-colorschemes'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
@@ -39,8 +40,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'ryanoasis/vim-devicons'
-
-
+Plugin 'wakatime/vim-wakatime'
+Plugin 'rodjek/vim-puppet'
 
 " Plugin 'kmyk/sdl2.vim'
 " Plugin 'garbas/vim-snipmate'
@@ -183,7 +184,8 @@ map <leader>t :terminal<cr>
 map <leader>l :w <bar> :bn<cr>
 map <leader>j :w <bar> :bp<cr>
 map <leader>k :w<cr>
-map <leader>b :bufdo bd<cr>
+map <leader>b :Bclose<cr>:tabclose<cr>gT
+" map <leader>b :bufdo bd<cr>
 map <leader>ç :x<cr>
 " command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
 
@@ -225,3 +227,55 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
 
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'''
+let g:startify_bookmarks = [
+  \ '~/.vimrc',
+  \ ]
+
+let g:startify_custom_header = [
+  \ '                                _________  __  __',
+  \ '            __                 /\_____   \/\ \/\ `\',
+  \ '   __   __ /\_\    ___ ___     \/____/   /\ \ \ \  \',
+  \ '  /\ \ /\ \\/\ \ /` __` __`\        /   /  \ \ \_\  \__',
+  \ '  \ \ \_/ / \ \ \/\ \/\ \/\ \      /   / __ \ \___   __\',
+  \ '   \ \___/   \ \_\ \_\ \_\ \_\    /\__/ /\_\ \/___/\_\_/',
+  \ '    \/__/     \/_/\/_/\/_/\/_/    \/_/  \/_/      \/_/',
+  \ '',
+  \ '  ======================================================',
+  \ '',
+  \ ]
+
+let g:startify_custom_footer = [
+  \ '',
+  \ '  ======================================================',
+  \ '',
+  \ '  Copyright Tiago, 2016'
+  \ ]
+
+let g:startify_session_autoload = 1
+let g:ctrlp_reuse_window = 'startify'
+let g:startify_files_number = 6
+let g:startify_list_order = ['bookmarks', 'files']
+let g:startify_change_to_dir = 1
+let g:startify_relative_path = 1
+" let g:startify_session_dir = '~/.vim/session'
+
+" let g:startify_skiplist = [
+"   \ 'COMMIT_EDITMSG',
+"   \ $VIMRUNTIME .'/doc',
+"   \ 'bundle/.*/doc',
+"   \ '\.DS_Store'
+"   \ ]
+"
+"
+
+" augroup startify
+"   autocmd!
+"   " Hacky way to disable Powerline in Startify
+"   autocmd BufNew * set laststatus=2|highlight CursorLine guibg=NONE
+"   autocmd FileType startify set laststatus=0|highlight CursorLine guibg=#000000|setlocal cursorline
+" augroup END

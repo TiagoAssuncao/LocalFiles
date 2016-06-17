@@ -1,5 +1,4 @@
 #!/bin/bash
-iatest=$(expr index "$-" i)
 
 #######################################################
 # SOURCED ALIAS'S AND SCRIPTS
@@ -9,7 +8,7 @@ iatest=$(expr index "$-" i)
 if [ -f /etc/bashrc ]; then
 	 . /etc/bashrc
 fi
-
+. ~/.bash-wakatime.sh
 # Enable bash programmable completion features in interactive shells
 if [ -f /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
@@ -150,7 +149,7 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Alias's for multiple directory listing commands
 alias la='ls -Alh' # show hidden files
-alias ls='ls -Fh --color=always' # add colors and file type extensions
+alias ls='ls -Fh --color=always; . ~/.bash-wakatime.sh;' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lk='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time
@@ -737,6 +736,4 @@ alias manage='python3 manage.py'
 alias l='ls'
 alias c='cd'
 . ~/.xinitrc
-
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
