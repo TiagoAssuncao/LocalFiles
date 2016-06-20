@@ -8,13 +8,13 @@
 if [ -f /etc/bashrc ]; then
 	 . /etc/bashrc
 fi
-. ~/.bash-wakatime.sh
 # Enable bash programmable completion features in interactive shells
 if [ -f /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
 elif [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
+. ~/.bash-wakatime.sh
 
 #######################################################
 # EXPORTS
@@ -149,7 +149,7 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Alias's for multiple directory listing commands
 alias la='ls -Alh' # show hidden files
-alias ls='ls -Fh --color=always; . ~/.bash-wakatime.sh;' # add colors and file type extensions
+alias ls='. ~/.bash-wakatime.sh;ls -Fh --color=always ' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lk='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time

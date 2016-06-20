@@ -31,7 +31,6 @@ Plugin 'flazz/vim-colorschemes'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tlib_vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'lepture/vim-jinja'
 Plugin 'Glench/Vim-Jinja2-Syntax'
@@ -42,6 +41,19 @@ Plugin 'mhinz/vim-startify'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'rodjek/vim-puppet'
+Plugin 'vim-scripts/mru.vim'
+Plugin 'terryma/vim-expand-region'
+Plugin 'lervag/vimtex'
+" Plugin 'xuhdev/vim-latex-live-preview'
+
+"""""""""""""""""""""
+" Snipmat
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+" Optional
+Plugin 'honza/vim-snippets'
+
 
 " Plugin 'kmyk/sdl2.vim'
 " Plugin 'garbas/vim-snipmate'
@@ -151,8 +163,44 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
-let g:miniBufExplTabWrap = 9
+"""""""""""""""""""""""""""""""""""""""""""""'
+"    ==>> Show a vertical line on line 80
+"""""""""""""""""""""""""""""""""""""""""""""'
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
+
+""""""""""""""""""""""""""""""
+" => snipMate (beside <TAB> support <CTRL-j>)
+""""""""""""""""""""""""""""""
+ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
+snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
+
+
+""""""""""""""""""""""""""""""
+" => Python section
+""""""""""""""""""""""""""""""
+let python_highlight_all = 1
+au FileType python syn keyword pythonDecorator True None False self
+
+au BufNewFile,BufRead *.jinja set syntax=htmljinja
+au BufNewFile,BufRead *.mako set ft=mako
+
+au FileType python map <buffer> F :set foldmethod=indent<cr>
+
+au FileType python inoremap <buffer> $r return
+au FileType python inoremap <buffer> $i import
+au FileType python inoremap <buffer> $p print
+au FileType python inoremap <buffer> $f #--- <esc>a
+au FileType python map <buffer> <leader>1 /class
+au FileType python map <buffer> <leader>2 /def
+au FileType python map <buffer> <leader>C ?class
+au FileType python map <buffer> <leader>D ?def
+
+let g:miniBufExplTabWrap = 9
 
 " Syntasttic
 " set statusline+=%#warningmsg#
@@ -187,6 +235,7 @@ map <leader>k :w<cr>
 map <leader>b :Bclose<cr>:tabclose<cr>gT
 " map <leader>b :bufdo bd<cr>
 map <leader>ç :x<cr>
+map <leader>tex :VimtexCompile<cr>
 " command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
 
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
@@ -198,6 +247,17 @@ let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 let g:webdevicons_enable_ctrlp = 1
 
+""""""""""""""""""""""""""""""
+" => MRU plugin
+""""""""""""""""""""""""""""""
+let MRU_Max_Entries = 400
+map <leader>f :MRU<CR>
+
+
+""""""""""""""""""""""""""""""
+""  => Vim Latex live previwe
+""""""""""""""""""""""""""""""
+" let g:livepreview_previewer = 'evince'
 
 
 " NERDTress File highlighting
@@ -228,12 +288,17 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
 
 
-
+" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'''
 let g:startify_bookmarks = [
   \ '~/.vimrc',
+  \ '~/.bashrc',
   \ ]
 
 let g:startify_custom_header = [
@@ -255,27 +320,27 @@ let g:startify_custom_footer = [
   \ '',
   \ '  Copyright Tiago, 2016'
   \ ]
-
-let g:startify_session_autoload = 1
-let g:ctrlp_reuse_window = 'startify'
-let g:startify_files_number = 6
-let g:startify_list_order = ['bookmarks', 'files']
-let g:startify_change_to_dir = 1
-let g:startify_relative_path = 1
-" let g:startify_session_dir = '~/.vim/session'
-
-" let g:startify_skiplist = [
-"   \ 'COMMIT_EDITMSG',
-"   \ $VIMRUNTIME .'/doc',
-"   \ 'bundle/.*/doc',
-"   \ '\.DS_Store'
-"   \ ]
 "
+" let g:startify_session_autoload = 1
+" let g:ctrlp_reuse_window = 'startify'
+" let g:startify_files_number = 6
+" " let g:startify_list_order = ['bookmarks', 'files']
+" let g:startify_change_to_dir = 1
+" let g:startify_relative_path = 1
+" " let g:startify_session_dir = '~/.vim/session'
 "
-
-" augroup startify
-"   autocmd!
-"   " Hacky way to disable Powerline in Startify
-"   autocmd BufNew * set laststatus=2|highlight CursorLine guibg=NONE
-"   autocmd FileType startify set laststatus=0|highlight CursorLine guibg=#000000|setlocal cursorline
-" augroup END
+" " let g:startify_skiplist = [
+" "   \ 'COMMIT_EDITMSG',
+" "   \ $VIMRUNTIME .'/doc',
+" "   \ 'bundle/.*/doc',
+" "   \ '\.DS_Store'
+" "   \ ]
+" "
+" "
+"
+" " augroup startify
+" "   autocmd!
+" "   " Hacky way to disable Powerline in Startify
+" "   autocmd BufNew * set laststatus=2|highlight CursorLine guibg=NONE
+" "   autocmd FileType startify set laststatus=0|highlight CursorLine guibg=#000000|setlocal cursorline
+" " augroup END
