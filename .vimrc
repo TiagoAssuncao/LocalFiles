@@ -44,7 +44,7 @@ Plugin 'rodjek/vim-puppet'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'lervag/vimtex'
-" Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'qpkorr/vim-bufkill'
 
 """""""""""""""""""""
 " Snipmat
@@ -235,6 +235,8 @@ map <leader>k :w<cr>
 map <leader>b :Bclose<cr>:tabclose<cr>gT
 " map <leader>b :bufdo bd<cr>
 map <leader>ç :x<cr>
+map <leader>w :BD<cr>
+map <leader>q :q!<cr>
 map <leader>tex :VimtexCompile<cr>
 " command Vcs sp ~/.vim-cheatsheet/cheatsheet.md
 
@@ -302,17 +304,34 @@ let g:startify_bookmarks = [
   \ ]
 
 let g:startify_custom_header = [
-  \ '                                _________  __  __',
-  \ '            __                 /\_____   \/\ \/\ `\',
-  \ '   __   __ /\_\    ___ ___     \/____/   /\ \ \ \  \',
-  \ '  /\ \ /\ \\/\ \ /` __` __`\        /   /  \ \ \_\  \__',
-  \ '  \ \ \_/ / \ \ \/\ \/\ \/\ \      /   / __ \ \___   __\',
-  \ '   \ \___/   \ \_\ \_\ \_\ \_\    /\__/ /\_\ \/___/\_\_/',
-  \ '    \/__/     \/_/\/_/\/_/\/_/    \/_/  \/_/      \/_/',
-  \ '',
-  \ '  ======================================================',
-  \ '',
-  \ ]
+            \ '                                ___           ___           ___     ',
+            \ '        ___       ___          /  /\         /  /\         /  /\    ',
+            \ '       /  /\     /  /\        /  /  \       /  / /_       /  /  \   ',
+            \ '      /  / /    /  / /       /  / /\ \     /  / / /\     /  / /\ \  ',
+            \ '     /  / /    /__/  \      /  / / /  \   /  / /_/  \   /  / /  \ \ ',
+            \ '    /  /  \    \__\/\ \__  /__/ / / /\ \ /__/ /__\/\ \ /__/ / \__\ \',
+            \ '   /__/ /\ \      \  \ \/\ \  \ \/ /__\/ \  \ \ /  / / \  \ \ /  / /',
+            \ '   \__\/  \ \      \__\  /  \  \  /       \  \ \  / /   \  \ \  / / ',
+            \ '        \  \ \     /__/ /    \  \ \        \  \ \/ /     \  \ \/ /  ',
+            \ '         \__\/     \__\/      \  \ \        \  \  /       \  \  /   ',
+            \ '                               \__\/         \__\/         \__\/    ',
+            \ '',
+            \ '   =================================================================',
+            \ '',
+            \ ]
+
+" let g:startify_custom_header = [
+"   \ '                                _________  __  __',
+"   \ '            __                 /\_____   \/\ \/\ `\',
+"   \ '   __   __ /\_\    ___ ___     \/____/   /\ \ \ \  \',
+"   \ '  /\ \ /\ \\/\ \ /` __` __`\        /   /  \ \ \_\  \__',
+"   \ '  \ \ \_/ / \ \ \/\ \/\ \/\ \      /   / __ \ \___   __\',
+"   \ '   \ \___/   \ \_\ \_\ \_\ \_\    /\__/ /\_\ \/___/\_\_/',
+"   \ '    \/__/     \/_/\/_/\/_/\/_/    \/_/  \/_/      \/_/',
+"   \ '',
+"   \ '  ======================================================',
+"   \ '',
+"   \ ]
 
 let g:startify_custom_footer = [
   \ '',
@@ -320,12 +339,25 @@ let g:startify_custom_footer = [
   \ '',
   \ '  Copyright Tiago, 2016'
   \ ]
+
+
+let g:startify_list_order = [
+    \ ['   My most recently:'],
+    \ 'files',
+    \ ['   Sessions:'],
+    \ 'sessions',
+    \ ['   Current Dir:'],
+    \ 'dir',
+    \ ['   These are my bookmarks:'],
+    \ 'bookmarks',
+    \ ]
 "
 " let g:startify_session_autoload = 1
 " let g:ctrlp_reuse_window = 'startify'
-" let g:startify_files_number = 6
-" " let g:startify_list_order = ['bookmarks', 'files']
-" let g:startify_change_to_dir = 1
+let g:startify_files_number = 5
+let g:startify_dir_number = 5
+let g:startify_session_persistence = 1
+let g:startify_change_to_dir = 1
 " let g:startify_relative_path = 1
 " " let g:startify_session_dir = '~/.vim/session'
 "
@@ -344,3 +376,12 @@ let g:startify_custom_footer = [
 " "   autocmd BufNew * set laststatus=2|highlight CursorLine guibg=NONE
 " "   autocmd FileType startify set laststatus=0|highlight CursorLine guibg=#000000|setlocal cursorline
 " " augroup END
+
+" Put this in your vimrc:
+" >
+    " autocmd VimEnter *
+    "             \   if !argc()
+    "             \ |   Startify
+    "             \ |   NERDTree
+    "             \ |   wincmd w
+    "             \ | endif
