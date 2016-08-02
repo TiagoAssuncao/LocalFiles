@@ -23,6 +23,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'JetBrains/ideavim'
 
 "Themes
 Plugin 'tomasr/molokai'
