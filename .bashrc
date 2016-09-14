@@ -57,6 +57,7 @@ alias pico='edit'
 alias spico='sedit'
 alias nano='edit'
 alias snano='sedit'
+alias fastcom="git add . ; git commit -m'Update' ; git push origin travis;"
 
 alias see='sudo netstat -lpn | grep'
 alias op='gnome-open'
@@ -68,6 +69,7 @@ alias 7='cd ~/Zoho\ Docs/7semestre/'
 alias 8='cd ~/Zoho\ Docs/8semestre/'
 alias about='cd ~/Zoho\ Docs/7semestre/about_us'
 alias null='> /dev/null'
+alias python='/usr/bin/python3.4'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
