@@ -67,9 +67,15 @@ alias com='git commit -ps'
 alias q='exit'
 alias 7='cd ~/Zoho\ Docs/7semestre/'
 alias 8='cd ~/Zoho\ Docs/8semestre/'
+alias fso='cd ~/Zoho\ Docs/8semestre/fso/'
+alias game='cd ~/Zoho\ Docs/8semestre/game/'
+alias gpp='cd ~/Zoho\ Docs/8semestre/gpp/'
+alias ihc='cd ~/Zoho\ Docs/8semestre/ihc/'
+alias mds='cd ~/Zoho\ Docs/8semestre/mds/'
+alias mps='cd ~/Zoho\ Docs/8semestre/mps/'
 alias about='cd ~/Zoho\ Docs/7semestre/about_us'
 alias null='> /dev/null'
-alias python='/usr/bin/python3.4'
+# alias python='/usr/bin/python3.4'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
