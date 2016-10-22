@@ -691,14 +691,14 @@ function __setprompt
 	fi
 
 	# Date
-	PS1+="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')" # Date
-	PS1+="${BLUE} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])" # Time
+	# PS1+="\[${DARKGRAY}\](\[${CYAN}\]\$(date +%a) $(date +%b-'%-m')" # Date
+	# PS1+="${BLUE} $(date +'%-I':%M:%S%P)\[${DARKGRAY}\])" # Time
 
 	# CPU or MEMORY usage
 	# PS1+="(\[${MAGENTA}\]$(mem)"
 
 	# Jobs
-	PS1+="\[${DARKGRAY}\] \[${MAGENTA}\]\j "
+	PS1+="\[${DARKGRAY}\]\[${MAGENTA}\]\j "
 
 	# Network Connections (for a server - comment out for non-server)
 	#PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]Net $(awk 'END {print NR}' /proc/net/tcp)"
