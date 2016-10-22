@@ -1,0 +1,40 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/nginx.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'edkolev/tmuxline.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+map <C-n> :NERDTreeToggle<CR>
+map <S-Tab> :bn<CR>
+set t_Co=256 " Force 256 colors
+set t_ut= " improve screen clearing by using the background colo
+set background=dark
+colorscheme molokai
+colorscheme peaksea
+
+set guifont=DejaVu\ Sans:s12
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_theme='luna'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+set encoding=utf-8   
+set nu
+set relativenumber
