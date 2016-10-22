@@ -19,7 +19,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 map <C-n> :NERDTreeToggle<CR>
-map <S-Tab> :bn<CR>
+map <S-C-Tab> :bn<CR>
 set t_Co=256 " Force 256 colors
 set t_ut= " improve screen clearing by using the background colo
 set background=dark
@@ -38,3 +38,11 @@ set laststatus=2
 set encoding=utf-8   
 set nu
 set relativenumber
+autocmd vimenter * NERDTree
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let mapleader = ","
+let maplocalleader = ","
+map <Leader>w :w <Esc>
+map <Leader>q :q <Esc>
+map <Leader>x :x <Esc>
