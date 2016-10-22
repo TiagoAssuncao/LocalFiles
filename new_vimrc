@@ -18,6 +18,7 @@ Plugin 'edkolev/tmuxline.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+syn on
 map <C-n> :NERDTreeToggle<CR>
 map <S-Tab> :bn<CR>
 set t_Co=256 " Force 256 colors
