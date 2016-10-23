@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+set nocompatible              " be iMprcved, required
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,25 +14,27 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'sickill/vim-monokai'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 syn on
-map <C-n> :NERDTreeToggle<CR>
-map <S-C-Tab> :bn<CR>
+map <C-e> :NERDTreeToggle<CR>
+map <S-Tab> :bn<CR>
 set t_Co=256 " Force 256 colors
-set t_ut= " improve screen clearing by using the background colo
-set background=dark
-colorscheme molokai
-colorscheme peaksea
+colorscheme badwolf
+
 
 set guifont=DejaVu\ Sans:s12
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-let g:airline_theme='luna'
+let g:airline_theme='badwolf'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
@@ -47,3 +49,21 @@ let maplocalleader = ","
 map <Leader>w :w <Esc>
 map <Leader>q :q <Esc>
 map <Leader>x :x <Esc>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Trigger configuration. Do not use <tab> if you use
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+set incsearch
+set hlsearch
+set cindent
