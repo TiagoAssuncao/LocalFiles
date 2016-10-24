@@ -18,6 +18,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'sickill/vim-monokai'
+Plugin 'qpkorr/vim-bufkill'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -49,6 +50,7 @@ let maplocalleader = ","
 map <Leader>w :w <Esc>
 map <Leader>q :q <Esc>
 map <Leader>x :x <Esc>
+map <Leader>d :BD <Esc>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -67,3 +69,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set incsearch
 set hlsearch
 set cindent
+
+let g:tmuxline_preset = 'full'
+" let g:tmuxline_preset = {
+"       \'a'    : '#S',
+"       \'b'    : '#W',
+"       \'c'    : '#H',
+"       \'win'  : '#I #W',
+"       \'cwin' : '#I #W',
+"       \'x'    : '#(pwd)',
+"       \'y'    : '#(date)',
+"       \'z'    : '#H'}
