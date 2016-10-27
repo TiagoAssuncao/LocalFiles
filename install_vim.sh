@@ -6,8 +6,7 @@ git clone https://github.com/powerline/fonts
 cd fonts/
 sh install.sh
 
-touch ~/.tmux.conf
-echo "set -g default-terminal 'screen-256color'" >> ~/.tmux.conf
-echo "alias tmux='TERM=screen-256color-bce tmux' " >> ~/.bashrc
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+cp -f LocalFiles/.tmux.conf .
 source ~/.bashrc
 
