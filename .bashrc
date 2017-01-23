@@ -57,8 +57,10 @@ alias pico='edit'
 alias spico='sedit'
 alias nano='edit'
 alias snano='sedit'
+alias auto='autopep8 --in-place --aggressive --aggressive -v '
 alias fastcom="git add . ; git commit -m'Update' ; git push origin travis;"
 
+alias menv='source ~/env/bin/activate'
 alias see='sudo netstat -lpn | grep'
 alias op='gnome-open'
 alias htop='sudo htop'
@@ -76,6 +78,8 @@ alias mps='cd ~/Zoho\ Docs/8semestre/mps/'
 alias about='cd ~/Zoho\ Docs/7semestre/about_us'
 alias null='> /dev/null'
 # alias python='/usr/bin/python3.4'
+alias tmux="TERM=screen-256color-bce tmux"
+
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
@@ -740,6 +744,7 @@ function __setprompt
 
 	# PS4 is used for tracing a script in debug mode
 	PS4='\[${DARKGRAY}\]+\[${NOCOLOR}\] '
+
 }
 PROMPT_COMMAND='__setprompt'
 alias run='python3 manage.py runserver'
@@ -748,3 +753,9 @@ alias l='ls'
 alias c='cd'
 . ~/.xinitrc
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source ~/.rvm/scripts/rvm
+alias trans='~/trans :pt'
+alias trans='~/trans :pt'
+alias tra='~/trans :pt'

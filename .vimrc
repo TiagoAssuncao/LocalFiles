@@ -19,6 +19,9 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'sickill/vim-monokai'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'vim-scripts/django.vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -27,7 +30,10 @@ syn on
 map <C-e> :NERDTreeToggle<CR>
 map <S-Tab> :bn<CR>
 set t_Co=256 " Force 256 colors
+
 colorscheme badwolf
+hi Normal ctermbg=none
+highlight NonText ctermbg=none
 
 
 set guifont=DejaVu\ Sans:s12
@@ -51,6 +57,7 @@ map <Leader>w :w <Esc>
 map <Leader>q :q <Esc>
 map <Leader>x :x <Esc>
 map <Leader>d :BD <Esc>
+map <Leader>v "*p <Esc>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -78,5 +85,5 @@ set tabstop=8
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set noswapfile
 filetype indent on
-
